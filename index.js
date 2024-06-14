@@ -3,6 +3,8 @@ const nm = require("nodemailer");
 const cors = require("cors")
 const fs = require('fs');
 const ejs = require("ejs")
+const path = require('path');
+
 
 require('dotenv').config();
 
@@ -26,9 +28,14 @@ const transporter = nm.createTransport({
 
 app.post("/contact",(req, res)=>{
     const { contactName, contactEmail, message } = req.body;
-    let tqUserFile = fs.readFileSync("thankyou.html.ejs", "utf-8")
+    const tqUserFilePath = path.join(__dirname, 'thankyou.html.ejs');
+
+    let tqUserFile;
 
     try{
+
+        tqUserFile = fs.readFileSync(tqUserFilePath, 'utf-8');
+
         const mailOptionsSelf = {
             from: contactEmail,
             to: 'kondapalliharshavardhanraju@gmail.com',
