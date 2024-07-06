@@ -13,7 +13,7 @@ const app = express();
 const port = process.env.PORT;
 
 app.use(cors({
-    origin: ["http://localhost:5173", 'https://emi-calculator-omega.vercel.app/'],
+    origin: ["http://localhost:5173", 'https://emi-calculator-omega.vercel.app', 'https://emicalculatorjani.netlify.app'],
     methods: ['GET', 'POST'],
     credentials: true,
 }));
