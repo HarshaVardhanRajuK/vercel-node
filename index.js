@@ -12,6 +12,8 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT;
 
+app.disable('x-powered-by');
+
 app.use(cors());
 
 app.use((req, res, next) => {
