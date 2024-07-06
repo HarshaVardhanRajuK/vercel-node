@@ -20,6 +20,11 @@ app.use(cors({
 
 app.options('*', cors());
 
+app.use((req, res, next) => {
+    console.log(`Request Headers: ${JSON.stringify(req.headers)}`);
+    next();
+});
+
 app.use(express.json());
 
 app.get("/", (req, res)=>{
