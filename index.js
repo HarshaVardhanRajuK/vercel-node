@@ -14,8 +14,6 @@ const port = process.env.PORT;
 
 app.use(cors());
 
-app.options('*', cors());
-
 app.use((req, res, next) => {
     console.log(`Request Headers: ${JSON.stringify(req.headers)}`);
     next();
