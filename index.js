@@ -5,11 +5,12 @@ const fs = require('fs');
 const ejs = require("ejs")
 const path = require('path');
 
+const calculate = require("./calculations")
 
 require('dotenv').config();
 
 const app = express();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT;
 
 app.use(cors())
 app.use(express.json());
@@ -77,6 +78,17 @@ app.post("/contact",(req, res)=>{
         console.log(err)
     }
 
+})
+
+app.post("/calculate", (req, res) => {
+    try {
+        const response = calculate(req)
+
+        res.status(200).json(response)
+
+    }catch(err){
+        res.status(500).send(err.message)
+    }
 })
 
 app.listen(port, ()=>{
