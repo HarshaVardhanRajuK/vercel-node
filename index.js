@@ -14,7 +14,11 @@ const port = process.env.PORT;
 
 app.disable('x-powered-by');
 
-app.use(cors());
+const CORSoptions = {
+    origin: ['https://emi-calculator-omega.vercel.app/', 'https://harshavkportfolio.netlify.app/']
+}
+
+app.use(cors(CORSoptions));
 
 app.use((req, res, next) => {
     console.log(`Request Headers: ${JSON.stringify(req.headers)}`);
