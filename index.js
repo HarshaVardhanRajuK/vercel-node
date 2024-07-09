@@ -15,7 +15,9 @@ const port = process.env.PORT;
 app.disable('x-powered-by');
 
 const CORSoptions = {
-    origin: ['https://emi-calculator-omega.vercel.app', 'https://harshavkportfolio.netlify.app', 'http://localhost:5173']
+    origin: ['https://emi-calculator-omega.vercel.app', 'https://harshavkportfolio.netlify.app', 'http://localhost:5173'],
+    optionsSuccessStatus: 204,
+    maxAge: 86400
 }
 
 app.use(cors(CORSoptions));
