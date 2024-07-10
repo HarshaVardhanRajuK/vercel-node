@@ -42,7 +42,7 @@ app.get("/", (req, res) => {
   res.send("<h1>hello world!</h1>");
 });
 
-app.use(favicon(path.join(__dirname, 'public', 'favicon.png')));
+app.get('/favicon.ico', (req, res) => res.status(204).end());
 
 app.post("/calculate", (req, res) => {
   try {
