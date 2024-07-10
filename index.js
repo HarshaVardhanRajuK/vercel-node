@@ -33,7 +33,7 @@ app.use(express.json());
 app.use((req, res, next) => {
   const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   
-  console.log(`Request from IP: ${ip}, date: ${(new Date()).toLocaleDateString()}`);
+  console.log(`Request from IP: ${ip}`);
 
   next();
 });
