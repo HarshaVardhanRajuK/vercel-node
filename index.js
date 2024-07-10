@@ -34,6 +34,15 @@ app.get("/", (req, res) => {
   res.send(`<h1>hello</h1>`);
 });
 
+app.use((req, res, next) => {
+  const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+  const userAgent = req.headers['user-agent'];
+  
+  console.log(`Request from IP: ${ip}, User-Agent: ${userAgent}`);
+
+  next();
+});
+
 app.post("/calculate", (req, res) => {
   try {
     const response = calculate(req);
