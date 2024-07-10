@@ -1,4 +1,5 @@
 require('dotenv').config();
+const process = require("process")
 
 const insuranceData = JSON.parse(process.env.INSURANCEDATA);
 const ROIData = JSON.parse(process.env.ROIDATA);
