@@ -30,17 +30,25 @@ app.use(cors(CORSoptions));
 
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.send(`<h1>hello</h1>`);
-});
+const logs = {}
 
 app.use((req, res, next) => {
   const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   const userAgent = req.headers['user-agent'];
+
+  if (logs[ip]) {
+    logs[ip] += 1
+  }else {
+    logs[ip] = 1
+  }
   
   console.log(`Request from IP: ${ip}, User-Agent: ${userAgent}`);
 
   next();
+});
+
+app.get("/logs", (req, res) => {
+  res.json({logs});
 });
 
 app.post("/calculate", (req, res) => {
