@@ -74,8 +74,8 @@ function getBrokenCharges() {
   return brokenChargesValue;
 }
 
-function calculate(req) {
-  let { approvedLoanAmount, lifeRadio, healthRadio, fpr, irr, tenure } = req.body
+function calculate(inputData) {
+  let { approvedLoanAmount, lifeRadio, healthRadio, fpr, irr, tenure } = inputData
 
   let { lifeAmount, healthAmount } = CheckLifeAndHealthAmount(
     lifeRadio,
